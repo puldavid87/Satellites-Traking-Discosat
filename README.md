@@ -32,6 +32,8 @@ Test the library:
 #Library
 from skyfield.api import load, wgs84
 
+import serial
+
 # Load the JPL ephemeris DE421 (covers 1900-2050).
 planets = load('de421.bsp')
 earth, mars = planets['earth'], planets['mars']
@@ -121,8 +123,13 @@ else:
     
 azi=int(round(az.degrees,0))
 message=str(azi)+":"+str(alti)
-print(message)
-ser = serial.Serial('COMX', 9600)
+ ```
+Run this code just one time
+``` python
+ser = serial.Serial('COM3', 9600)
+ ```
+ Run this section each time that you what to track another satellite.
+``` python
 ser.open()
 ser.write(message.encode())
 ser.close()
@@ -138,4 +145,8 @@ else:
 azi=int(round(az.degrees,0))
 message=str(azi)+":"+str(alti)
 print(message)
+```
+Copy the message and put it in Arduino Serial monitor
+```
+After you have uploaded this sketch onto your Arduino, click on the right-most button on the toolbar in the Arduino IDE. The button is circled below. The following window will open. This window is called the Serial Monitor and it is part of the Arduino IDE software.
 ```
