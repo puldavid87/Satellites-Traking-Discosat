@@ -18,3 +18,28 @@ This workshop is oriented to build an Open Source satellite tracking. First, we'
 * You can use Python in your web navigator and gmail account: [Google Colab] https://colab.research.google.com/ or install it in your computer: [Anaconda](https://www.anaconda.com/products/individual).
 *  With Arduino at the moment, the best option is installing on the computer (there is a beta online version), [Arduino](https://www.arduino.cc/en/software)
 
+### Python Code: 
+
+You can run the code in the selected environment without issues. 
+
+``` python
+#Library
+from skyfield.api import load, wgs84
+
+
+# Create a timescale and ask the current time.
+ts = load.timescale()
+t = ts.now()
+
+# Load the JPL ephemeris DE421 (covers 1900-2050).
+planets = load('de421.bsp')
+earth, mars = planets['earth'], planets['mars']
+
+# What's the position of Mars, viewed from Earth?
+astrometric = earth.at(t).observe(mars)
+ra, dec, distance = astrometric.radec()
+print(ra)
+print(dec)
+print(distance)
+
+```
