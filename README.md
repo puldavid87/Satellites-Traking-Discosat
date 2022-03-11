@@ -108,8 +108,9 @@ print('Altitude:',alt.degrees*-1)
 print('Azimuth:', az.degrees)
 print('Distance: {:.1f} km'.format(distance.km))
 ```
-To check latitude and longitud, you can check: [n2yo](https://www.n2yo.com/satellite/)
- send the azimuth and altitude to Arduino board:
+To check latitude and longitud, you can check: [n2yo](https://www.n2yo.com/satellite/).
+
+ Send the azimuth and altitude to Arduino board:
   ``` python
   import serial,time
 if alt.degrees<0:
@@ -125,3 +126,15 @@ ser.open()
 ser.write(message.encode())
 ser.close()
  ```
+ If you're working on GoogleColab:
+ 
+  ``` python
+ if alt.degrees<0:
+    alti=int(alt.degrees*-1)
+else:
+    alti=int(alt.degrees*-1)
+    
+azi=int(round(az.degrees,0))
+message=str(azi)+":"+str(alti)
+print(message)
+```
