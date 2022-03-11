@@ -104,11 +104,24 @@ print('Longitude:', lon)
 difference = satellite - bluffton
 topocentric = difference.at(t)
 alt, az, distance = topocentric.altaz()
-print('Altitude:',alt.degrees)
+print('Altitude:',alt.degrees*-1)
 print('Azimuth:', az.degrees)
 print('Distance: {:.1f} km'.format(distance.km))
 ```
+To check latitude and longitud, you can check: [n2yo](https://www.n2yo.com/satellite/)
  send the azimuth and altitude to Arduino board:
   ``` python
-  
+  import serial,time
+if alt.degrees<0:
+    alti=int(alt.degrees*-1)
+else:
+    alti=int(alt.degrees*-1)
+    
+azi=int(round(az.degrees,0))
+message=str(azi)+":"+str(alti)
+print(message)
+ser = serial.Serial('COMX', 9600)
+ser.open()
+ser.write(message.encode())
+ser.close()
  ```
