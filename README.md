@@ -25,7 +25,7 @@ You can run the code in the selected environment without issues.
 Install the library:
 
 * Google colab: pip install skyfield
-* Computer:  Windows Search -> Anconda pront -> pip install skyfield
+* Computer:  Windows/Mac/Linux Search -> Anconda pront -> pip install skyfield
 
 Test the library:
 ``` python
