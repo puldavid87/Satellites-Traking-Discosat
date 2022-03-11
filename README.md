@@ -71,8 +71,8 @@ Find the time that we can track satellites in our specific location
 bluffton = wgs84.latlon(+55.65, +12.59)
 #days that we like to track satellites
 
-t0 = ts.utc(2022, 2, 28)
-t1 = ts.utc(2022, 3, 1)
+t0 = ts.utc(2022, 3, 14)
+t1 = ts.utc(2022, 3, 15)
 for i in range(0,len(satellites)):
     satellite=satellites[i]
     t, events = satellite.find_events(bluffton, t0, t1, altitude_degrees=30.0)   
