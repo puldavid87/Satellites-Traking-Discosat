@@ -64,3 +64,27 @@ for i in range(0,len(satellites)):
     print('Satellite: ',satellite.name)
     print('{:.3f} days away from epoch'.format(days))
   ```
+Find the time that we can track satellites in our specific location
+
+``` python
+#ITU LATITUDE AND LOGITUDE
+bluffton = wgs84.latlon(+55.65, +12.59)
+#days that we like to track satellites
+
+t0 = ts.utc(2022, 2, 28)
+t1 = ts.utc(2022, 3, 1)
+for i in range(0,len(satellites)):
+    satellite=satellites[i]
+    t, events = satellite.find_events(bluffton, t0, t1, altitude_degrees=30.0)   
+    for ti, event in zip(t, events):
+        name = ('rise above 30°', 'culminate', 'set below 30°')[event]
+        times=ti.utc_strftime('%Y %b %d %H:%M:%S')
+        aux=list(times)
+        hour_max=int(aux[12])
+        hour_min=int(aux[13])
+        hour=hour_max+hour_min
+        if(hour>8 and hour < 18):
+            print('Satellite: ',satellite.name)
+            print(ti.utc_strftime('%Y %b %d %H:%M:%S'), name)
+            print(ti.utc_strftime('%Y %b %d %H:%M:%S'), name)
+  ```
