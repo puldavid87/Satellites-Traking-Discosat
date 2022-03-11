@@ -108,3 +108,7 @@ print('Altitude:',alt.degrees)
 print('Azimuth:', az.degrees)
 print('Distance: {:.1f} km'.format(distance.km))
 ```
+ send the azimuth and altitude to Arduino board:
+  ``` python
+  
+ ```
