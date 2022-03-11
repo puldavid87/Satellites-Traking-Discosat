@@ -88,3 +88,23 @@ for i in range(0,len(satellites)):
             print(ti.utc_strftime('%Y %b %d %H:%M:%S'), name)
             print(ti.utc_strftime('%Y %b %d %H:%M:%S'), name)
   ```
+  
+  Select the satellite and receive his coordinates
+ ``` python 
+  # You can instead use ts.now() for the current time
+t = ts.now()
+satellite = by_name['AEROCUBE 12A']
+geocentric = satellite.at(t)
+print(geocentric.position.km)
+
+#location
+lat, lon = wgs84.latlon_of(geocentric)
+print('Latitude:', lat)
+print('Longitude:', lon)
+difference = satellite - bluffton
+topocentric = difference.at(t)
+alt, az, distance = topocentric.altaz()
+print('Altitude:',alt.degrees)
+print('Azimuth:', az.degrees)
+print('Distance: {:.1f} km'.format(distance.km))
+```
