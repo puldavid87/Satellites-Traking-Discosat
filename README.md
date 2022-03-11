@@ -198,3 +198,5 @@ if(Serial.available()>0){
   delay(1000);
 }
 ```
+### Electronic schematic:
+![image](https://github.com/puldavid87/Satellites-Traking-Discosat/blob/main/discosat.png)
