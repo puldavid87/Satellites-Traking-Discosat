@@ -12,3 +12,8 @@ In this workshop we cover the basics of ground station operation and building in
 ## Workshop: Satellites Traking with Open Source Platforms:
 
 This workshop is oriented to build an Open Source satellite tracking. First, we're going to use Python with [Skyflied library](https://rhodesmill.org/skyfield/) and [Celestrak](http://celestrak.com/) to receive the orbit from many satellites. Second, we will use Arduino, one 180 servo motor, and a 360 servo motor to point them. 
+
+### Python and Arduino Installation:
+
+* You can use Python in your navigator and gmail account: [Google Colab] https://colab.research.google.com/ or install it in your computer: [Anaconda](https://www.anaconda.com/products/individual).
+
