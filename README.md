@@ -55,3 +55,12 @@ by_name = {sat.name: sat for sat in satellites}
 for i in by_name:
     print(i)
 ```
+When was the last connection to Earth from each satellite:
+``` python
+t = ts.now()
+for i in range(0,len(satellites)):
+    satellite=satellites[i]
+    days = t - satellite.epoch
+    print('Satellite: ',satellite.name)
+    print('{:.3f} days away from epoch'.format(days))
+  ```
