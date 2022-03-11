@@ -22,14 +22,15 @@ This workshop is oriented to build an Open Source satellite tracking. First, we'
 
 You can run the code in the selected environment without issues. 
 
+Install the library:
+
+* Google colab: pip install skyfield
+* Computer:  Windows Search -> Anconda pront -> pip install skyfield
+
+Test the library:
 ``` python
 #Library
 from skyfield.api import load, wgs84
-
-
-# Create a timescale and ask the current time.
-ts = load.timescale()
-t = ts.now()
 
 # Load the JPL ephemeris DE421 (covers 1900-2050).
 planets = load('de421.bsp')
@@ -42,4 +43,15 @@ print(ra)
 print(dec)
 print(distance)
 
+```
+Get the satellites information:
+``` python
+#print satellites
+stations_url = 'http://celestrak.com/NORAD/elements/stations.txt'
+satellites = load.tle_file(stations_url)
+print('Loaded', len(satellites), 'satellites')
+#loop satellites
+by_name = {sat.name: sat for sat in satellites}
+for i in by_name:
+    print(i)
 ```
