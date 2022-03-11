@@ -150,3 +150,51 @@ Copy the message and put it in Arduino Serial monitor
 ```
 After you have uploaded this sketch onto your Arduino, click on the right-most button on the toolbar in the Arduino IDE. The button is circled below. The following window will open. This window is called the Serial Monitor and it is part of the Arduino IDE software.
 ```
+### Arduino Code:
+Install the FeedBackServo [library](https://github.com/HyodaKazuaki/Parallax-FeedBack-360-Servo-Control-Library-4-Arduino).
+Add the [zip library ](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries).
+
+``` c
+
+#include "FeedBackServo.h"
+#include <Servo.h>
+
+Servo myservo;  // create servo object to control a servo
+// define feedback signal pin and servo control pin
+#define FEEDBACK_PIN 2
+#define SERVO_PIN 3
+
+// set feedback signal pin number
+FeedBackServo servo = FeedBackServo(FEEDBACK_PIN);
+  int azimut=0;
+  int elevation=0;
+void setup() {
+    // set servo control pin number
+    servo.setServoControl(SERVO_PIN);
+    servo.setKp(1.0);
+    Serial.begin(9600);
+    servo.rotate(0, 4);
+    myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+    myservo.write(0);
+    delay(1000);
+}
+
+void loop() {
+    // rotate servo to 270 and -180 degrees(with contains +-4 degrees error) each 1 second.
+if(Serial.available()>0){
+  String data=Serial.readString();
+  int dot=data.indexOf(':');
+  String azi=data.substring(0,dot);
+  String ele=data.substring(dot+1);
+  azimut=azi.toInt();
+  elevation=ele.toInt();
+ // Serial.println(elevation);
+ // Serial.println(azimut);
+
+  }
+
+   myservo.write(elevation);
+  servo.rotate(azimut,4);
+  delay(1000);
+}
+```
