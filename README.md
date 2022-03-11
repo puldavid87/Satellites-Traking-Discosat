@@ -110,7 +110,7 @@ print('Distance: {:.1f} km'.format(distance.km))
 ```
 To check latitude and longitud, you can check: [n2yo](https://www.n2yo.com/satellite/).
 
-To determine the COM communication, check this: [Find Arduino port](https://se.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html)
+To determine the COM communication, check this: [Find Arduino port](https://se.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html) or [Arduino support](https://support.arduino.cc/hc/en-us/articles/4406856349970-Find-the-port-your-board-is-connected-to)
  Send the azimuth and altitude to Arduino board:
   ``` python
   import serial,time
