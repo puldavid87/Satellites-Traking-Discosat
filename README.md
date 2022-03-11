@@ -15,5 +15,6 @@ This workshop is oriented to build an Open Source satellite tracking. First, we'
 
 ### Python and Arduino Installation:
 
-* You can use Python in your navigator and gmail account: [Google Colab] https://colab.research.google.com/ or install it in your computer: [Anaconda](https://www.anaconda.com/products/individual).
+* You can use Python in your web navigator and gmail account: [Google Colab] https://colab.research.google.com/ or install it in your computer: [Anaconda](https://www.anaconda.com/products/individual).
+*  With Arduino at the moment, the best option is installing on the computer (there is a beta online version), [Arduino](https://www.arduino.cc/en/software)
 
