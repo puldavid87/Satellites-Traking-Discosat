@@ -201,3 +201,7 @@ if(Serial.available()>0){
 ```
 ### Electronic schematic:
 ![image](https://github.com/puldavid87/Satellites-Traking-Discosat/blob/main/discosat.png)
+
+### Pointer Location:
+Use the compass of your cellphone to determine the north and put the pointer in that direction before sending satellites coordinates to Arduino.
+![image](https://github.com/puldavid87/Satellites-Traking-Discosat/blob/main/satel.png)
