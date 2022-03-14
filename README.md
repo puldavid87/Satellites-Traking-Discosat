@@ -31,10 +31,13 @@ Test the library:
 ``` python
 #Library
 from skyfield.api import load, wgs84
-
+# Create a timescale and ask the current time.
+ts = load.timescale()
+t = ts.now()
 
 
 # Load the JPL ephemeris DE421 (covers 1900-2050).
+
 planets = load('de421.bsp')
 earth, mars = planets['earth'], planets['mars']
 
