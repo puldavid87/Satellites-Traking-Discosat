@@ -76,28 +76,27 @@ Find the time that we can track satellites in our specific location
 bluffton = wgs84.latlon(+55.65, +12.59)
 #days that we like to track satellites
 
-t0 = ts.utc(2022, 3, 14)
-t1 = ts.utc(2022, 3, 15)
+t0 = ts.utc(2022, 5, 4) #today
+t1 = ts.utc(2022, 5, 5)#tomorrow
 for i in range(0,len(satellites)):
     satellite=satellites[i]
     t, events = satellite.find_events(bluffton, t0, t1, altitude_degrees=30.0)   
     for ti, event in zip(t, events):
         name = ('rise above 30°', 'culminate', 'set below 30°')[event]
         times=ti.utc_strftime('%Y %b %d %H:%M:%S')
-        aux=list(times)
-        hour_max=int(aux[12])
-        hour_min=int(aux[13])
-        hour=hour_max+hour_min
-        if(hour>8 and hour < 18):
-            print('Satellite: ',satellite.name)
+        aux=int(ti.utc_strftime('%H'))
+        #when we want to track satellites in specific hours
+        if(aux>8):
+            print('Satellite UTC hours: ',satellite.name)
             print(ti.utc_strftime('%Y %b %d %H:%M:%S'), name)
             print(ti.utc_strftime('%Y %b %d %H:%M:%S'), name)
   ```
   
   Select the satellite and receive his coordinates
  ``` python 
-  # You can instead use ts.now() for the current time
-t = ts.now()
+# You can instead use ts.now() for the current time
+from datetime import datetime
+t = ts.utc(2022, 5, 4, 17, 52, 35)
 satellite = by_name['AEROCUBE 12A']
 geocentric = satellite.at(t)
 print(geocentric.position.km)
