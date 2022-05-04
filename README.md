@@ -117,14 +117,8 @@ To check latitude and longitud, you can check: [n2yo](https://www.n2yo.com/).
 To determine the COM communication, check this: [Find Arduino port](https://se.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html) or [Arduino support](https://support.arduino.cc/hc/en-us/articles/4406856349970-Find-the-port-your-board-is-connected-to)
  Send the azimuth and altitude to Arduino board:
   ``` python
-  import serial,time
-if alt.degrees<0:
-    alti=int(alt.degrees*-1)
-else:
-    alti=int(alt.degrees*-1)
-    
-azi=int(round(az.degrees,0))
-message=str(azi)+":"+str(alti)
+ #create the array 
+message=str(az)+":"+str(alt)
  ```
 Run this code just one time in your pc
 ``` python
@@ -133,7 +127,6 @@ ser = serial.Serial('COMX', 9600) -> COM communication before mentioned
  ```
  Run this section each time that you what to track another satellite.
 ``` python
-ser.open()
 ser.write(message.encode())
 ser.close()
  ```
